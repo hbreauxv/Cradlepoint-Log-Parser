@@ -43,7 +43,7 @@ def analyze_function():
     # Open save as dialog and ask user to save file
     output_file = filedialog.asksaveasfilename(defaultextension=".txt", initialdir=os.getcwd())
     # Pass name of the output file to the search_log() function
-    search_log(log_text_box.get(),output_file,'log_messages.xlsx')
+    search_log(log_text_box.get(),output_file)
 
     # update analyze_lbl to show results/name of output file
     analyze_result.configure(text='Saved result as: ' + output_file)
