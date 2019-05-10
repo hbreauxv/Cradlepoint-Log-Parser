@@ -32,7 +32,7 @@ def convert_xlsx():
 
     # Load a DataFrame from the connectivity+modem sheet and only look at the message + meaning columns
     cols = [2, 3]
-    df1 = pd.read_excel(xlsx, sheet_name='Connectivity+Modem', usecols=cols)
+    df1 = pd.read_excel(xlsx, sheet_name='Connectivity+Modem', usecols=cols, encoding='UTF-8')
 
     # make our search dictionary
     search_dictionary = {}

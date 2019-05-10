@@ -36,8 +36,9 @@ def open_command():
 
         # insert scanned log into the scan_textpad
         search_log(file.name, 'scan_output.txt')
-        with open('scan_output.txt', 'r') as scan_file:
+        with open('scan_output.txt', 'r', encoding='UTF-8') as scan_file:
             scan_contents = scan_file.read()
+            print(scan_contents)
             scan_textpad.delete('1.0', END)
             scan_textpad.insert('1.0', scan_contents)
 
