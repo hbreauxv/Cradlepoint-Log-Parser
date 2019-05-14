@@ -17,10 +17,10 @@ root.iconbitmap('./Resources/Images/cradlepoint_icon.ico')
 
 # create textpads & labels
 log_text = Label(root, text="Cradlepoint Log")
-log_textpad = ScrolledText.ScrolledText(root, font='Segoe 11')
+log_textpad = ScrolledText.ScrolledText(root, font='Segoe 11', wrap='word')
 
 scan_text = Label(root, text="Scan Results")
-scan_textpad = ScrolledText.ScrolledText(root, font='Segoe 11')
+scan_textpad = ScrolledText.ScrolledText(root, font='Segoe 11', wrap='word')
 
 # create a menu & define functions for each menu item
 def open_command():
@@ -31,12 +31,14 @@ def open_command():
     if file is not None:
         contents = file.read()
         # insert unscanned log into the log_textpad
+        log_textpad.delete('1.0', END)
         log_textpad.insert('1.0', contents)
 
         # insert scanned log into the scan_textpad
         search_log(file.name, 'scan_output.txt')
-        with open('scan_output.txt', 'r') as scan_file:
+        with open('scan_output.txt', 'r', encoding='UTF-8') as scan_file:
             scan_contents = scan_file.read()
+            scan_textpad.delete('1.0', END)
             scan_textpad.insert('1.0', scan_contents)
 
         file.close()
