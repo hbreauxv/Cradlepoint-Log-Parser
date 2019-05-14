@@ -3,8 +3,8 @@ Firmware Version: 6.3.1.cc2619b
 Firmware Build Date: Wed Mar  8 18:16:21 MST 2017
 Product Name: CBA850
 
-Mon Jan  8 13:23:53 2018|WARNING|ecm|ECM credentials are invalid
-Mon Jan  8 13:23:47 2018|INFO|clock|System time set to: 20:23:47 01/08/18 UTC
+Mon Jan  8 13:23:53 2018|WAN:ac2e4ac2|Connect Event: no carrier - state: connecting
+Mon Jan  8 13:23:47 2018|WAN:ac2e4ac2| mdm.1: LTE Modem data connection failed - status:9
 Wed Dec 31 17:01:51 1969|INFO|WAN:52f8e1c1|Service Change : Not Reported -> LTE, 92%, RSSI: -79(dBm), SINR: 0.8, RSRP: -111, RSRQ: -14, RFBAND: Band 4
 Wed Dec 31 17:01:51 1969|INFO|WAN:52f8e1c1|signal MC400LP6 (SIM1) on port modem1: 92%, RSSI:-79(dBm), SINR:0.8(dB), RSRP:-111(dB), RSRQ:-14(dB), RFBAND: Band 4
 Wed Dec 31 17:01:51 1969|INFO|WAN:52f8e1c1|The cell id for the MC400LP6 (SIM1) on port modem1 is 12203542 (0xba3616)

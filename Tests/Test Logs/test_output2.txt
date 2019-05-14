@@ -6,7 +6,7 @@ Common meaning: No carrier is an error that typically indicates bad provisioning
 
 Match on line 2, Keyword: Mon Jan  8 13:23:47 2018|INFO|WAN:ac2e4ac2| mdm.1: LTE Modem data connection failed - status:9 
 Line 2: Mon Jan  8 13:23:47 2018|INFO|WAN:ac2e4ac2| mdm.1: LTE Modem data connection failed - status:9
-Common meaning: The LTE connection to the internet failed.  Status 9 indicates a no carrier error.  No carrier is usually a result of bad provisioning or very poor signal strength.  
+Common meaning: The LTE connection to the internet failed. Â Status 9 indicates a no carrier error. Â No carrier is usually a result of bad provisioning or very poor signal strength.  
 
 
 
