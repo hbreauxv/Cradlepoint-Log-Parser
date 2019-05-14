@@ -84,7 +84,7 @@ def search_log(input_file, output_file):
             # if there's a match, write the line, match, and the meaning to our output file
             if match:
                 output_file.write("Match on line %s, Keyword: %s \n" % (i, match.group()))
-                output_file.write("Line %s: " % i + line + '\n')
+                output_file.write('\n')
                 output_file.write("Common meaning: %s" % dictionary[key] + '\n')
                 output_file.write('\n\n\n')
 

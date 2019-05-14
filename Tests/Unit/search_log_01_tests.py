@@ -12,7 +12,7 @@ class TestSearch(unittest.TestCase):
         # Compare the output from searching a short log file
         search_log('short_test.txt','compare_short_test.txt')
         self.assertTrue(filecmp.cmp('correct_short_test.txt','compare_short_test.txt'),
-                                    'Short search failed, correct_short_test.txt didnt match the output')
+                                    'Short search failed, output of search log didnt match correct_short_test.txt')
 
 
 if __name__ == '__main__':
