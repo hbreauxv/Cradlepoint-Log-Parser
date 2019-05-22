@@ -1,14 +1,9 @@
 """
-A log parser that compiles the regex for each individual line it searches
-It takes an xlsx and turns it into a python dictionary.
-Each key in the dictionary is a regex phrase that can be compiled and used to search a line.
-Each value is the meaning of the log message the key searches for
+This script takes a CP log and parses for problem lines. It outputs a file with the problem lines and their common meaning.
 
-It is probably bad practice to make a dictionary structured like that?  And there may be a more elegant way to
-search through this data using panda.  But for now this works in my testing.
-
-Things missing: exception handling. :|
-Program can probably be restructured to keep each function more contained to the task its supposed to do.
+It operates by turning a xlsx of problem lines + their meanings into a regex of problem lines.  It uses that regex to
+search the log file, and writes the problem line, the line number, and the common meaning of the problem line to an
+output file.
 
 Made by Harvey Breaux for use with Cradlepoint Logs
 """
