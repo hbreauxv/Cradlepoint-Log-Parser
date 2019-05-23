@@ -15,13 +15,12 @@ class ScanLog(object):
     It uses regex to scan through logs to find problem messages from the database, and then it writes the messages and
     their meanings to an output file.
     """
-    def __init__(self, input_file, output_file, log_messages=''):
+    def __init__(self, input_file, output_file, log_messages='log_messages.xlsx', search_categories='all'):
         self.input_file = input_file
         self.output_file = output_file
-        if log_messages is None:
-            self.log_messages = 'log_messages.xlsx'
-        else:
-            self.log_messages = log_messages
+        self.log_messages = log_messages
+        self.search_categories = [].append(search_categories) # not yet implemented. should be a list of categories
+
 
     def convert_xlsx(self):
         """
@@ -34,7 +33,10 @@ class ScanLog(object):
         dirname = os.path.dirname(__file__)
         xlsx = os.path.join(dirname, self.log_messages)
 
-        # Load a DataFrame from the connectivity+modem sheet and only look at the message + meaning columns
+        # Loop through our search categories to open the correct sheets and load any messages in them into our df
+        # Code goes here, wip :) :)
+
+        # Load a DataFrame from the specified categories sheet and only look at the message + meaning columns
         cols = [2, 3]
         df1 = pd.read_excel(xlsx, sheet_name='Connectivity+Modem', usecols=cols, encoding='UTF-8')
 
