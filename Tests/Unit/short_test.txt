@@ -1,3 +1,0 @@
-WAN:ac2e4ac2|Connect Event: no carrier - state: connecting
-Mon Jan  8 13:23:47 2018|INFO|WAN:ac2e4ac2| mdm.1: LTE Modem data connection failed - status:9
-
