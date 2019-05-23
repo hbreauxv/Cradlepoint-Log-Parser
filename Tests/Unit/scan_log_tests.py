@@ -6,7 +6,7 @@ import unittest
 import filecmp
 import os
 import sys
-from scan_log import ScanLog
+from scan_log import ScanLog # this doesn't work atm :) :) :)
 
 class TestSearch(unittest.TestCase):
 
