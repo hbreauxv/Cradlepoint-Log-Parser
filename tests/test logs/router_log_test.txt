@@ -1,0 +1,167 @@
+Firmware Type: RELEASE
+Firmware Version: 6.3.1.cc2619b
+Firmware Build Date: Wed Mar  8 18:16:21 MST 2017
+Product Name: CBA850
+
+Mon Jan  8 13:23:53 2018|WAN:ac2e4ac2|Connect Event: no carrier - state: connecting
+Mon Jan  8 13:23:47 2018|WAN:ac2e4ac2| mdm.1: LTE Modem data connection failed - status:9
+Wed Dec 31 17:01:51 1969|INFO|WAN:52f8e1c1|Service Change : Not Reported -> LTE, 92%, RSSI: -79(dBm), SINR: 0.8, RSRP: -111, RSRQ: -14, RFBAND: Band 4
+Wed Dec 31 17:01:51 1969|INFO|WAN:52f8e1c1|signal MC400LP6 (SIM1) on port modem1: 92%, RSSI:-79(dBm), SINR:0.8(dB), RSRP:-111(dB), RSRQ:-14(dB), RFBAND: Band 4
+Wed Dec 31 17:01:51 1969|INFO|WAN:52f8e1c1|The cell id for the MC400LP6 (SIM1) on port modem1 is 12203542 (0xba3616)
+Wed Dec 31 17:01:50 1969|INFO|dhcp|Purging DHCP leases
+Wed Dec 31 17:01:50 1969|INFO|kernel|arp_tables: (C) 2002 David S. Miller
+Wed Dec 31 17:01:47 1969|INFO|kernel|ctnetlink v0.93: registering with nfnetlink.
+Wed Dec 31 17:01:46 1969|INFO|WAN:52f8e1c1|Connection Type: Not Reported
+Wed Dec 31 17:01:46 1969|INFO|WAN:52f8e1c1|connecting -> connected, Reason: Failover
+Wed Dec 31 17:01:46 1969|INFO|WAN:52f8e1c1.SignalVerify|Connected
+Wed Dec 31 17:01:46 1969|INFO|WAN:52f8e1c1.DHCP|Connected
+Wed Dec 31 17:01:46 1969|INFO|WAN:52f8e1c1.DHCP|ipinfo={'gateway': '166.253.144.62', 'netmask': '255.255.255.252', 'ip_address': '166.253.144.61', 'dnslist': ['198.224.173.135', '198.224.174.135']}
+Wed Dec 31 17:01:46 1969|INFO|udhcpc[410]|Lease of 166.253.144.61 obtained, lease time 7200
+Wed Dec 31 17:01:46 1969|INFO|udhcpc[410]|Sending select for 166.253.144.61...
+Wed Dec 31 17:01:46 1969|INFO|udhcpc[410]|Sending discover...
+Wed Dec 31 17:01:46 1969|INFO|udhcpc[410]|udhcpc (v1.24.1) started
+Wed Dec 31 17:01:46 1969|INFO|WAN:52f8e1c1.AutoAPNBack|Connected
+Wed Dec 31 17:01:46 1969|INFO|WAN:52f8e1c1.CPPM|Connected
+Wed Dec 31 17:01:46 1969|INFO|WAN:52f8e1c1.CPPM|state=connecting  result=ok
+Wed Dec 31 17:01:46 1969|INFO|WAN:52f8e1c1|Connect Event: ok - state: connecting
+Wed Dec 31 17:01:45 1969|INFO|cp_stack_mgr|modem1: Active APN: we01.VZWSTATIC
+Wed Dec 31 17:01:38 1969|INFO|WAN:52f8e1c1|signal MC400LP6 (SIM1) on port modem1: 100%, RSSI:-66(dBm), SINR:3.0(dB), RSRP:-97(dB), RSRQ:-14(dB), RFBAND: Band 13
+Wed Dec 31 17:01:38 1969|INFO|WAN:52f8e1c1|The cell id for the MC400LP6 (SIM1) on port modem1 is 12203522 (0xba3602)
+Wed Dec 31 17:01:34 1969|INFO|WAN:52f8e1c1.CPPM|state=connecting  result=processing
+Wed Dec 31 17:01:34 1969|INFO|WAN:52f8e1c1|Connect Event: processing - state: connecting
+Wed Dec 31 17:01:34 1969|INFO|WAN:52f8e1c1.AutoAPNFront|Connected
+Wed Dec 31 17:01:34 1969|INFO|WAN:52f8e1c1.AutoAPNFront|auto apn state: Initial
+Wed Dec 31 17:01:34 1969|INFO|WAN:52f8e1c1.MultiSIMCritExit|Connected
+Wed Dec 31 17:01:34 1969|WARNING|WAN:5326a8ca|Malformed image string: ['00.00.00.00_OEMPRI918', '001.000_000'] for index PKG_INFO3 
+Wed Dec 31 17:01:34 1969|WARNING|WAN:52f8e1c1|Malformed image string: ['00.00.00.00_OEMPRI918', '001.000_000'] for index PKG_INFO3 
+Wed Dec 31 17:01:34 1969|INFO|WAN:52f8e1c1|Execute Event ok: 9
+Wed Dec 31 17:01:34 1969|WARNING|WAN:52f8e1c1|Malformed image string: ['00.00.00.00_OEMPRI918', '001.000_000'] for index PKG_INFO3 
+Wed Dec 31 17:01:34 1969|INFO|WAN:52f8e1c1.AutoCarrier|Connected
+Wed Dec 31 17:01:34 1969|INFO|WAN:52f8e1c1.AutoCarrier|CARSWITCHstate: Success
+Wed Dec 31 17:01:34 1969|INFO|WAN:52f8e1c1|autoCarrierSwitch verizon
+Wed Dec 31 17:01:34 1969|INFO|WAN:52f8e1c1.AutoCarrier|CARSWITCHstate: Initiate
+Wed Dec 31 17:01:34 1969|INFO|WAN:52f8e1c1.AutoCarrier|CARSWITCHstate: Initial
+Wed Dec 31 17:01:34 1969|INFO|WAN:52f8e1c1.MultiSIM|Connected
+Wed Dec 31 17:01:34 1969|INFO|WAN:52f8e1c1.MultiSIM|MSIM state: Success
+Wed Dec 31 17:01:34 1969|INFO|WAN:52f8e1c1|Execute Event ok: 4
+Wed Dec 31 17:01:34 1969|INFO|WAN:52f8e1c1.MultiSIM|MSIM state: Initiate
+Wed Dec 31 17:01:34 1969|INFO|WAN:52f8e1c1.MultiSIM|MSIM state: Initial
+Wed Dec 31 17:01:34 1969|INFO|WAN:52f8e1c1.MultiSIMCritEnter|Connected
+Wed Dec 31 17:01:34 1969|INFO|WAN:52f8e1c1|Execute Event ok: 8
+Wed Dec 31 17:01:34 1969|INFO|WAN:52f8e1c1|disconnected -> connecting
+Wed Dec 31 17:01:34 1969|INFO|WAN:52f8e1c1|WanDevMixIn:Starting
+Wed Dec 31 17:01:33 1969|INFO|WAN:52f8e1c1|StandardModem::checkNIASession: connection state : disconnected
+Wed Dec 31 17:01:33 1969|INFO|WAN:52f8e1c1|StandardModem::checkNIASession: NIA mode : disconnected session : None
+Wed Dec 31 17:01:33 1969|WARNING|WAN:52f8e1c1|Malformed image string: ['00.00.00.00_OEMPRI918', '001.000_000'] for index PKG_INFO3 
+Wed Dec 31 17:01:33 1969|INFO|WAN:52f8e1c1|configured_event: Device activation state: True
+Wed Dec 31 17:01:33 1969|WARNING|WAN:52f8e1c1|Malformed image string: ['00.00.00.00_OEMPRI918', '001.000_000'] for index PKG_INFO3 
+Wed Dec 31 17:01:33 1969|INFO|WAN:52f8e1c1|Configure Event: ok
+Wed Dec 31 17:01:30 1969|INFO|WAN:52f8e1c1|Preconfigured Event: ok
+Wed Dec 31 17:01:27 1969|INFO|WAN:52f8e1c1|Execute Event ok: 10
+Wed Dec 31 17:01:27 1969|INFO|WAN:5326a8ca|StandardModem::checkNIASession: connection state : disconnected
+Wed Dec 31 17:01:27 1969|INFO|WAN:5326a8ca|StandardModem::checkNIASession: NIA mode : disconnected session : None
+Wed Dec 31 17:01:27 1969|WARNING|WAN:5326a8ca|Malformed image string: ['00.00.00.00_OEMPRI918', '001.000_000'] for index PKG_INFO3 
+Wed Dec 31 17:01:27 1969|INFO|WAN:5326a8ca|configured_event: Device activation state: True
+Wed Dec 31 17:01:27 1969|WARNING|WAN:5326a8ca|Malformed image string: ['00.00.00.00_OEMPRI918', '001.000_000'] for index PKG_INFO3 
+Wed Dec 31 17:01:27 1969|INFO|WAN:5326a8ca|Configure Event: user intervention required
+Wed Dec 31 17:01:17 1969|INFO|kernel|usbcore: registered new interface driver cpusb3
+Wed Dec 31 17:01:15 1969|INFO|kernel|usb 1-2.4: new high-speed USB device number 5 using bcm-ehci
+Wed Dec 31 17:01:15 1969|INFO|kernel|usbcore: deregistering interface driver cpusb2
+Wed Dec 31 17:01:15 1969|WARNING|kernel|Device with id:2 unplugged
+Wed Dec 31 17:01:15 1969|INFO|kernel|usb 1-2.4: USB disconnect, device number 4
+Wed Dec 31 17:00:57 1969|INFO|cp_stack_mgr|modem1: Switching active SIM to slot SIM1
+Wed Dec 31 17:00:57 1969|INFO|WAN:5326a8ca|Preconfigured Event: user intervention required
+Wed Dec 31 17:00:57 1969|INFO|WAN:5326a8ca|Execute Event resource unavailable: 10
+Wed Dec 31 17:00:57 1969|INFO|WAN:5326a8ca|Plug event: ok
+Wed Dec 31 17:00:57 1969|WARNING|WAN:5326a8ca|Malformed image string: ['00.00.00.00_OEMPRI918', '001.000_000'] for index PKG_INFO3 
+Wed Dec 31 17:00:57 1969|INFO|cpevt|ifc supported tech: lte/3g
+Wed Dec 31 17:00:57 1969|INFO|WAN:52f8e1c1|Plug event: ok
+Wed Dec 31 17:00:57 1969|WARNING|WAN:52f8e1c1|Malformed image string: ['00.00.00.00_OEMPRI918', '001.000_000'] for index PKG_INFO3 
+Wed Dec 31 17:00:56 1969|INFO|cpevt|ifc supported tech: lte/3g
+Wed Dec 31 17:00:46 1969|INFO|kernel|usbcore: registered new interface driver cpusb2
+Wed Dec 31 17:00:45 1969|INFO|httpserver|Accepted web login from local address 192.168.0.124, user: admin
+Wed Dec 31 17:00:44 1969|INFO|kernel|usb 1-2.4: new high-speed USB device number 4 using bcm-ehci
+Wed Dec 31 17:00:44 1969|INFO|kernel|usbcore: deregistering interface driver cpusb1
+Wed Dec 31 17:00:44 1969|WARNING|kernel|Device with id:1 unplugged
+Wed Dec 31 17:00:44 1969|INFO|kernel|usb 1-2.4: USB disconnect, device number 3
+Wed Dec 31 17:00:26 1969|INFO|cp_stack_mgr|modem1: Switching active SIM to slot SIM2
+Wed Dec 31 17:00:16 1969|INFO|kernel|usbcore: registered new interface driver cpusb1
+Wed Dec 31 17:00:16 1969|INFO|kernel|ipptinterf2: port 1(eth0.2) entered forwarding state
+Wed Dec 31 17:00:16 1969|INFO|kernel|primarylan1: port 1(eth0.1) entered forwarding state
+Wed Dec 31 17:00:14 1969|INFO|kernel|usb 1-2.4: new high-speed USB device number 3 using bcm-ehci
+Wed Dec 31 17:00:14 1969|INFO|kernel|hub 1-2:1.0: 4 ports detected
+Wed Dec 31 17:00:06 1969|INFO|dhcp|New DHCP client: Shipping 192.168.0.124 70:88:6b:81:bc:59
+Wed Dec 31 17:00:05 1969|INFO|kernel|hub 1-2:1.0: USB hub found
+Wed Dec 31 17:00:05 1969|INFO|kernel|usb 1-2: new high-speed USB device number 2 using bcm-ehci
+Wed Dec 31 17:00:05 1969|INFO|kernel|usbserial: USB Serial support registered for FTDI USB Serial Device
+Wed Dec 31 17:00:03 1969|INFO|kernel|usbcore: registered new interface driver ftdi_sio
+Wed Dec 31 17:00:02 1969|INFO|kernel|usbcore: registered new interface driver usbserial
+Wed Dec 31 17:00:02 1969|INFO|kmod|Loading kernel module: ftdi_sio
+Wed Dec 31 17:00:02 1969|INFO|kmod|Loading kernel module: usbserial
+Wed Dec 31 17:00:02 1969|WARNING|kernel|Setting debug log level:0
+Wed Dec 31 17:00:02 1969|INFO|kernel|IPv6: ADDRCONF(NETDEV_CHANGE): ipptinterf2: link becomes ready
+Wed Dec 31 17:00:02 1969|INFO|logsys|Last message repeated 1 times.
+Wed Dec 31 17:00:02 1969|INFO|kernel|ipptinterf2: port 1(eth0.2) entered forwarding state
+Wed Dec 31 17:00:02 1969|INFO|kernel|device eth0.2 entered promiscuous mode
+Wed Dec 31 17:00:02 1969|INFO|cp_stack_mgr|setting log level to :0
+Wed Dec 31 17:00:02 1969|INFO|cp_stack_mgr|CP Stack Manager brd-id: 050000
+Wed Dec 31 17:00:02 1969|INFO|cp_stack_mgr|Starting CP Stack Manager
+Wed Dec 31 17:00:02 1969|WARNING|dns|No DNS Servers Configured!  Some features may not function properly!
+Wed Dec 31 17:00:01 1969|INFO|kernel|IPv6: ADDRCONF(NETDEV_UP): ipptinterf2: link is not ready
+Wed Dec 31 17:00:01 1969|INFO|kernel|IPv6: ADDRCONF(NETDEV_CHANGE): primarylan1: link becomes ready
+Wed Dec 31 17:00:01 1969|INFO|logsys|Last message repeated 1 times.
+Wed Dec 31 17:00:01 1969|INFO|kernel|primarylan1: port 1(eth0.1) entered forwarding state
+Wed Dec 31 17:00:01 1969|INFO|kernel|device eth0.1 entered promiscuous mode
+Wed Dec 31 17:00:01 1969|INFO|kernel|IPv6: ADDRCONF(NETDEV_UP): primarylan1: link is not ready
+Wed Dec 31 17:00:01 1969|INFO|lan|Adding child Network device: (type: ethernet, link: <Link eth0.2, ifindex: 11>, uid: IPPT) to IP Network: (name: IPPT Interface, ip: 192.168.10.1/255.255.255.0)
+Wed Dec 31 17:00:01 1969|INFO|vlan|Plugging VLAN: 2
+Wed Dec 31 17:00:01 1969|INFO|kernel|device eth0 entered promiscuous mode
+Wed Dec 31 17:00:01 1969|INFO|lan|Adding child Network device: (type: ethernet, link: <Link eth0.1, ifindex: 10>, uid: lan) to IP Network: (name: Primary LAN, ip: 192.168.0.1/255.255.255.0)
+Wed Dec 31 17:00:01 1969|INFO|vlan|Plugging VLAN: 1
+Wed Dec 31 17:00:00 1969|INFO|firewall|Added zone forwarding 00000005-695c-3d87-95cb-d0ee2029d0b5->00000002-695c-3d87-95cb-d0ee2029d0b5
+Wed Dec 31 17:00:00 1969|INFO|firewall|Added zone forwarding 00000002-695c-3d87-95cb-d0ee2029d0b5->00000005-695c-3d87-95cb-d0ee2029d0b5
+Wed Dec 31 17:00:00 1969|INFO|firewall|Added zone forwarding 00000003-695c-3d87-95cb-d0ee2029d0b5->00000002-695c-3d87-95cb-d0ee2029d0b5
+Wed Dec 31 17:00:00 1969|INFO|firewall|Added zone forwarding 00000002-695c-3d87-95cb-d0ee2029d0b5->00000003-695c-3d87-95cb-d0ee2029d0b5
+Wed Dec 31 17:00:00 1969|INFO|firewall|Added filter policy Default Deny All
+Wed Dec 31 17:00:00 1969|INFO|firewall|Added filter policy Default Allow All
+Wed Dec 31 17:00:00 1969|INFO|firewall|Added zone IPPT LAN Zone with id 5
+Wed Dec 31 17:00:00 1969|INFO|firewall|Added zone Primary LAN Zone with id 4
+Wed Dec 31 17:00:00 1969|INFO|firewall|Added zone WAN Zone with id 3
+Wed Dec 31 17:00:00 1969|INFO|firewall|Added zone Router with id 2
+Wed Dec 31 17:00:00 1969|INFO|firewall|Added zone All with id 1
+Wed Dec 31 17:00:00 1969|INFO|clock|System time set to: 00:00:00 01/01/70 UTC
+Wed Dec 31 17:00:24 1969|INFO|lan|Adding IP Network: (name: IPPT Interface, ip: 192.168.10.1/255.255.255.0)
+Wed Dec 31 17:00:24 1969|INFO|lan|Adding IP Network: (name: Primary LAN, ip: 192.168.0.1/255.255.255.0)
+Wed Dec 31 17:00:24 1969|WARNING|lan|IPv6 LAN: No delegated prefixes
+Wed Dec 31 17:00:23 1969|INFO|svcmgr|Firmware Type: RELEASE
+Wed Dec 31 17:00:23 1969|INFO|svcmgr|Firmware Version: 6.3.1.cc2619b
+Wed Dec 31 17:00:23 1969|INFO|svcmgr|Firmware Build Date: Wed Mar  8 18:16:21 MST 2017
+Wed Dec 31 17:00:23 1969|INFO|kernel|UBIFS: media format: w4/r0 (latest is w4/r0), UUID 649D0957-1A65-48D6-B152-F253C0379C86, small LPT model
+Wed Dec 31 17:00:23 1969|INFO|kernel|UBIFS: reserved for root: 4408081 bytes (4304 KiB)
+Wed Dec 31 17:00:23 1969|INFO|kernel|UBIFS: FS size: 93327360 bytes (89 MiB, 735 LEBs), journal size 4698112 bytes (4 MiB, 37 LEBs)
+Wed Dec 31 17:00:23 1969|INFO|kernel|UBIFS: LEB size: 126976 bytes (124 KiB), min./max. I/O unit sizes: 2048 bytes/2048 bytes
+Wed Dec 31 17:00:22 1969|INFO|kernel|UBIFS: mounted UBI device 1, volume 0, name "volume"
+Wed Dec 31 17:00:22 1969|INFO|kernel|UBIFS: background thread "ubifs_bgt1_0" started, PID 194
+Wed Dec 31 17:00:22 1969|INFO|kernel|UBI: background thread "ubi_bgt1d" started, PID 191
+Wed Dec 31 17:00:22 1969|INFO|kernel|UBI: available PEBs: 0, total reserved PEBs: 764, PEBs reserved for bad PEB handling: 12
+Wed Dec 31 17:00:22 1969|INFO|kernel|UBI: max/mean erase counter: 2/1, WL threshold: 4096, image sequence number: 3775250292
+Wed Dec 31 17:00:22 1969|INFO|kernel|UBI: user volume: 1, internal volumes: 1, max. volumes count: 128
+Wed Dec 31 17:00:22 1969|INFO|kernel|UBI: good PEBs: 764, bad PEBs: 4, corrupted PEBs: 0
+Wed Dec 31 17:00:22 1969|INFO|kernel|UBI: VID header offset: 2048 (aligned 2048), data offset: 4096
+Wed Dec 31 17:00:22 1969|INFO|kernel|UBI: min./max. I/O unit sizes: 2048/2048, sub-page size 2048
+Wed Dec 31 17:00:22 1969|INFO|kernel|UBI: PEB size: 131072 bytes (128 KiB), LEB size: 126976 bytes
+Wed Dec 31 17:00:22 1969|INFO|kernel|UBI: attached mtd7 (name "Filesystem", size 96 MiB) to ubi1
+Wed Dec 31 17:00:21 1969|WARNING|kernel|UBI warning: print_rsvd_warning: cannot reserve enough PEBs for bad PEB handling, reserved 12, need 16
+Wed Dec 31 17:00:21 1969|INFO|kernel|UBI: scanning is finished
+Wed Dec 31 17:00:21 1969|INFO|kernel|UBI: attaching mtd7 to ubi1
+Wed Dec 31 17:00:21 1969|INFO|kernel|UBI: default fastmap WL pool size: 25
+Wed Dec 31 17:00:21 1969|INFO|kernel|UBI: default fastmap pool size: 35
+Wed Dec 31 17:00:21 1969|INFO|root|Saving password for: admin
+Wed Dec 31 17:00:20 1969|INFO|cstore|Installing default config
+Wed Dec 31 17:00:17 1969|INFO|kmod|Loading kernel module: cpmodem_shim
+Wed Dec 31 17:00:17 1969|INFO|kmod|Loading kernel module: cpmodem_wrapper
+Wed Dec 31 17:00:12 1969|INFO|kmod|Loading kernel module: et
+Wed Dec 31 17:00:10 1969|INFO|kmod|Loading kernel module: brcm_robo
+Wed Dec 31 17:00:21 1969|INFO|logsys|Last message repeated 1 times.
+Wed Dec 31 17:00:09 1969|WARNING|filemgr|Found uncommitted inode: data loss may have occurred.
+
