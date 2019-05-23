@@ -56,15 +56,13 @@ def search_log(input_file, output_file):
     input_file = open(input_file, "r")
     output_file = open(output_file, "w", encoding='UTF-8')
 
-    # read through input file and separate each line
-    text = input_file.read().splitlines()
 
     # create a dictionary of messages and meanings from our xlsx
     dictionary = convert_xlsx()
 
     # go through each line in the input file and search it for matches with our regex
     i = 0
-    for line in text:
+    for line in input_file:
         # increment line counter
         i += 1
 
