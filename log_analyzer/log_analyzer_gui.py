@@ -7,12 +7,12 @@ from tkinter import *
 from tkinter import filedialog
 from tkinter import messagebox
 import tkinter.scrolledtext as ScrolledText
-from search_log_01 import search_log
+from scan_log import ScanLog
 
 root = Tk()
 root.geometry('1000x900')
 root.title("Cradlepoint Log Analyzer")
-root.iconbitmap('./Resources/Images/cradlepoint_icon.ico')
+root.iconbitmap('./resources/cradlepoint_icon.ico')
 
 
 # create textpads & labels
@@ -36,7 +36,7 @@ def open_command():
             log_textpad.insert('1.0', contents)
 
             # insert scanned log into the scan_textpad
-            search_log(file.name, 'scan_output.txt')
+            ScanLog(file.name, 'scan_output.txt').search_log()
             with open('scan_output.txt', 'r', encoding='UTF-8') as scan_file:
                 scan_contents = scan_file.read()
                 scan_textpad.delete('1.0', END)
