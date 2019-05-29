@@ -15,10 +15,10 @@ class ScanLog(object):
     It uses regex to scan through logs to find problem messages from the database, and then it writes the messages and
     their meanings to an output file.
     """
-    def __init__(self, input_file, output_file, log_messages='log_messages.xlsx', search_categories='all'):
+    def __init__(self, input_file, output_file, log_database='log_messages.xlsx', search_categories='all'):
         self.input_file = input_file
         self.output_file = output_file
-        self.log_messages = log_messages
+        self.log_database = log_database
         self.search_categories = [].append(search_categories) # not yet implemented. should be a list of categories
 
 
@@ -31,7 +31,7 @@ class ScanLog(object):
 
         # assemble path to xlsx
         dirname = os.path.dirname(__file__)
-        xlsx = os.path.join(dirname, self.log_messages)
+        xlsx = os.path.join(dirname, self.log_database)
 
         # Loop through our search categories to open the correct sheets and load any messages in them into our df
         # Code goes here, wip :) :)
@@ -100,10 +100,10 @@ class ScanLog(object):
 
     def _convert_db(self):
         """Check log db type and return the correctly dictionary"""
-        if self.log_messages.endswith('.xlsx'):
+        if self.log_database.endswith('.xlsx'):
             return self.convert_xlsx()
 
-        elif self.log_messages.endswith('.json'):
+        elif self.log_database.endswith('.json'):
             return self.convert_json()
 
 
