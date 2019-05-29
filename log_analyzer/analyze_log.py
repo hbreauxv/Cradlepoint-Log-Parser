@@ -1,5 +1,5 @@
 """
-Preforms various log analysis functions. Current vision is that class will handle requests to scan logs, make graphs,
+Performs various log analysis functions. Current vision is that class will handle requests to scan logs, make graphs,
 etc...
 """
 
