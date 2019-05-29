@@ -6,6 +6,10 @@ import unittest
 import filecmp
 import os
 import sys
+
+# import ScanLog class.  Inserting into our sys.path is very poor practice but for a basic test script it works
+# ¯\_(ツ)_/¯
+sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.dirname(__file__))))
 from scan_log import ScanLog # this doesn't work atm :) :) :)
 
 class TestSearch(unittest.TestCase):
