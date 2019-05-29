@@ -10,13 +10,14 @@ import sys
 # import ScanLog class.  Inserting into our sys.path is very poor practice but for a basic test script it works
 # ¯\_(ツ)_/¯
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.dirname(__file__))))
-from scan_log import ScanLog # this doesn't work atm :) :) :)
+from scan_log import ScanLog
 
 class TestSearch(unittest.TestCase):
 
     def test_short_search(self):
         # Compare the output from searching a short log file
-        ScanLog('short_test.txt','compare_short_test.txt', '').search_log()
+        Scanner = ScanLog('short_test.txt','compare_short_test.txt')
+        Scanner.search_log()
         self.assertTrue(filecmp.cmp('correct_short_test.txt','compare_short_test.txt'),
                                     'Short search failed, output of search log didnt match correct_short_test.txt')
 
