@@ -59,7 +59,7 @@ class ScanLog(object):
     def convert_json(self):
         """converts json log message files into a dictionary"""
 
-        return '{json: "empty json"}'
+        return '{message: "this method hasnt been created yet :)"}'
 
     def search_log(self):
         """
