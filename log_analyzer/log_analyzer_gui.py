@@ -16,6 +16,7 @@ from scan_log import ScanLog
 class LogGui:
     def __init__(self, master):
         self.master = master
+        # set window settings
         master.title("Cradlepoint Log Analyzer")
         master.geometry('1000x900')
         master.iconbitmap('./resources/cradlepoint_icon.ico')
@@ -37,6 +38,7 @@ class LogGui:
         self.scan_scrolledtext = ScrolledText.ScrolledText(master, font='Segoe 11', wrap='word')
         self.scan_scrolledtext.grid(column=1, row=1, sticky=N + S + W + E)
 
+        # create menus for the window
         self.menu = Menu(master)
         master.config(menu=self.menu)
 
@@ -54,6 +56,7 @@ class LogGui:
         self.helpmenu.add_command(label="About...", command=self.about_command)
 
     def open_command(self):
+        """Used to open log files and scan them using scan_log.py. Displays results in scan_scrolledtext"""
         file = filedialog.askopenfile(parent=self.master, mode='rb', title='Select a file', filetypes=(("Log Files",
                                                                                                 ("*.txt", "*.log"),),
                                                                                                 ("All Files", "*.*")))
@@ -80,6 +83,7 @@ class LogGui:
                 file.close()
 
     def save_command(self):
+        """Saves the contents of scan_scrolledtext to a file"""
         file = filedialog.asksaveasfile(mode='w', defaultextension=".txt", initialdir=os.getcwd())
 
         if file is not None:
@@ -89,10 +93,12 @@ class LogGui:
             file.close()
 
     def exit_command(self):
+        """Quits the program"""
         if messagebox.askokcancel("Quit", "Do you really want to quit?"):
             self.master.destroy()
 
     def about_command(self):
+        """Displays information about the program"""
         messagebox.showinfo("About", "Cradlepoint Log Analyzer\n\nThis program analyzes Cradlepoint logs "
                                              "to look for common messages and display their meanings."
                                              "\n\nMade by Harvey Breaux for Cradlepoint")
