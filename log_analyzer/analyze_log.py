@@ -1,9 +1,13 @@
 """
 Performs various log analysis functions. Current vision is that class will handle requests to scan logs, make graphs,
 etc...
+
+This is very unfinished and im still not sure what to do with it.  May end up being removed.  Ignore for now and just
+use scan_log.py or log_analyzer_gui :<
 """
 
 import sys
+
 
 class AnalyzeLog(object):
 
