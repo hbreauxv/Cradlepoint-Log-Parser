@@ -5,6 +5,7 @@ This is powered by tkinter and uses tkinters grid layout to place elements on th
 """
 
 import os
+import tkinter as tk
 from tkinter import *
 from tkinter import Grid
 from tkinter import filedialog
@@ -13,11 +14,38 @@ import tkinter.scrolledtext as ScrolledText
 from scan_log import ScanLog
 
 
-class LogGui:
+class TextLineNumbers(tk.Canvas):
+    """Custom tkinter class that lets us make and display line numbers"""
+    def __init__(self, textwidget, *args, **kwargs):
+        tk.Canvas.__init__(self, *args, **kwargs)
+        self.textwidget = textwidget
+        self.redraw()
+
+    def attach(self, text_widget):
+        self.textwidget = text_widget
+
+    def redraw(self, *args):
+        '''redraw line numbers'''
+        self.delete("all")
+
+        i = self.textwidget.index("@0,0")
+        while True :
+            dline= self.textwidget.dlineinfo(i)
+            if dline is None: break
+            y = dline[1]
+            linenum = str(i).split(".")[0]
+            self.create_text(2,y,anchor="nw", text=linenum)
+            i = self.textwidget.index("%s+1line" % i)
+
+        self.after(30, self.redraw)
+
+
+class LogGui(tk.Frame):
     """Main screen of the GUI"""
 
     def __init__(self, master):
         # instantiate scanner object with no input or output files selected
+        tk.Frame.__init__(self)
         self.scanner = ScanLog(None, None)
 
         self.master = master
@@ -34,15 +62,25 @@ class LogGui:
 
         # create log scrollboxes & labels
         self.log_text = Label(master, text="Cradlepoint Log")
-        self.log_text.grid(column=0, row=0, sticky=W)
+        self.log_text.grid(column=1, row=0, sticky=W)
+
         self.log_scrolledtext = ScrolledText.ScrolledText(master, font='Segoe 11', wrap='word')
-        self.log_scrolledtext.grid(column=0, row=1, sticky=N + S + E + W)
+        self.log_scrolledtext.grid(column=1, row=1, sticky=N + S + E + W)
+
+        self.log_linenumbers = TextLineNumbers(self.log_scrolledtext, width=30)
+        self.log_linenumbers.attach(self.log_scrolledtext)
+        self.log_linenumbers.grid(column=0, row=1, sticky=N + S + E + W)
 
         # create scan results scrollboxes & labels
         self.scan_text = Label(master, text="Scan Results")
-        self.scan_text.grid(column=1, row=0, sticky=W)
+        self.scan_text.grid(column=3, row=0, sticky=W)
+
         self.scan_scrolledtext = ScrolledText.ScrolledText(master, font='Segoe 11', wrap='word')
-        self.scan_scrolledtext.grid(column=1, row=1, sticky=N + S + W + E)
+        self.scan_scrolledtext.grid(column=3, row=1, sticky=N + S + W + E)
+
+        self.scan_linenumbers = TextLineNumbers(self.scan_scrolledtext, width=10)
+        self.scan_linenumbers.attach(self.scan_scrolledtext)
+        self.scan_linenumbers.grid(column=2, row=1, sticky=N + S + W + E)
 
         # create menus for the window
         self.menu = Menu(master)
