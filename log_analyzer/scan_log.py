@@ -23,11 +23,7 @@ class ScanLog(object):
         self.input_file = input_file
         self.output_file = output_file
         self.log_database = log_database
-        # initialize search log categories
         self.search_categories = ['Connectivity+Modem','IPSec','Routing Protocols','NCP','NCM']
-
-
-
 
     def convert_xlsx(self):
         """
@@ -118,14 +114,15 @@ class ScanLog(object):
         elif self.log_database.endswith('.json'):
             return self.convert_json()
 
-    def _update_categories(self, category):
+    def update_categories(self, category):
         """Add log categories to be searched for"""
         if category in self.ALLOWED_CATEGORIES:
-            self.search_categories.insert(0, category)
+            if category not in self.search_categories:
+                self.search_categories.insert(0, category)
         else:
             raise Exception('The category %s does not exist. Allowed categories: %s' % (category, self.ALLOWED_CATEGORIES))
 
-    def _remove_category(self, category):
+    def remove_category(self, category):
         """Remove a log category to be searched for"""
         if category in self.ALLOWED_CATEGORIES:
             self.search_categories.remove(category)
