@@ -15,11 +15,18 @@ class ScanLog(object):
     It uses regex to scan through logs to find problem messages from the database, and then it writes the messages and
     their meanings to an output file.
     """
-    def __init__(self, input_file, output_file, log_database='log_messages.xlsx', search_categories='all'):
+
+    # initialized allowed search categories
+    ALLOWED_CATEGORIES = ['Connectivity+Modem', 'IPSec', 'Routing Protocols', 'NCP', 'NCM']
+
+    def __init__(self, input_file, output_file, log_database='log_messages.xlsx'):
         self.input_file = input_file
         self.output_file = output_file
         self.log_database = log_database
-        self.search_categories = [].append(search_categories) # not yet implemented. should be a list of categories
+        # initialize search log categories
+        self.search_categories = ['Connectivity+Modem','IPSec','Routing Protocols','NCP','NCM']
+
+
 
 
     def convert_xlsx(self):
@@ -33,26 +40,31 @@ class ScanLog(object):
         dirname = os.path.dirname(__file__)
         xlsx = os.path.join(dirname, self.log_database)
 
-        # Loop through our search categories to open the correct sheets and load any messages in them into our df
-        # Code goes here, wip :) :)
-
-        # Load a DataFrame from the specified categories sheet and only look at the message + meaning columns
-        cols = [2, 3]
-        df1 = pd.read_excel(xlsx, sheet_name='Connectivity+Modem', usecols=cols, encoding='UTF-8')
-
         # make our search dictionary
         search_dictionary = {}
 
-        # loop through rows and append them to the search_dictionary
-        for index, row in df1.iterrows():
-            # replace any characters that mess up regex with escaped versions
-            escaped_row = str(row['Message'])
-            escaped_row = escaped_row.replace('|', '\|')
-            escaped_row = escaped_row.replace('(', '\(')
-            escaped_row = escaped_row.replace(')', '\)')
+        # Loop through our search categories to open the correct sheets and load any messages in them into our df
+        for category in self.search_categories:
 
-            # write rows to our search dictionary and appened a greedy match to end of line
-            search_dictionary['(' + escaped_row.rstrip() + '.*$)'] = row['Meaning']
+            # Load a DataFrame from the specified categories sheet and only look at the message + meaning columns
+            try:
+                cols = [2, 3]
+                df = pd.read_excel(xlsx, sheet_name=category, usecols=cols, encoding='UTF-8')
+
+                # loop through rows and append them to the search_dictionary
+                for index, row in df.iterrows():
+                    # replace any characters that mess up regex with escaped versions
+                    escaped_row = str(row['Message'])
+                    escaped_row = escaped_row.replace('|', '\|')
+                    escaped_row = escaped_row.replace('(', '\(')
+                    escaped_row = escaped_row.replace(')', '\)')
+
+                    # write rows to our search dictionary and appened a greedy match to end of line
+                    search_dictionary['(' + escaped_row.rstrip() + '.*$)'] = row['Meaning']
+
+            except Exception as e:
+                print("Exception occured while loading %s: %s" % (category, e))
+                continue
 
         return search_dictionary
 
@@ -105,6 +117,22 @@ class ScanLog(object):
 
         elif self.log_database.endswith('.json'):
             return self.convert_json()
+
+    def _update_categories(self, category):
+        """Add log categories to be searched for"""
+        if category in self.ALLOWED_CATEGORIES:
+            self.search_categories.insert(0, category)
+        else:
+            raise Exception('The category %s does not exist. Allowed categories: %s' % (category, self.ALLOWED_CATEGORIES))
+
+    def _remove_category(self, category):
+        """Remove a log category to be searched for"""
+        if category in self.ALLOWED_CATEGORIES:
+            self.search_categories.remove(category)
+        else:
+            raise Exception('The category %s does not exist. Allowed categories: %s' % (category, self.ALLOWED_CATEGORIES))
+
+
 
 
 if __name__ == "__main__":
