@@ -14,12 +14,18 @@ from scan_log import ScanLog
 
 
 class LogGui:
+    """Main screen of the GUI"""
+
     def __init__(self, master):
+        # instantiate scanner object with no input or output files selected
+        self.scanner = ScanLog(None, None)
+
         self.master = master
         # set window settings
         master.title("Cradlepoint Log Analyzer")
         master.geometry('1000x900')
         master.iconbitmap('./resources/cradlepoint_icon.ico')
+        master.option_add('*tearOff', False)
 
         # configure grid
         Grid.columnconfigure(master, 0, weight=1)
@@ -55,9 +61,38 @@ class LogGui:
         self.menu.add_cascade(label="Help", menu=self.helpmenu)
         self.helpmenu.add_command(label="About...", command=self.about_command)
 
+        # categories menu
+        self.categories_menu = Menu(self.menu)
+        self.menu.add_cascade(label="Categories", menu=self.categories_menu)
+
+        self.connectivity_checkbox = BooleanVar()
+        self.connectivity_checkbox.set(True)
+        self.categories_menu.add_checkbutton(label="Connectivity+Modem", onvalue=True, offvalue=False,
+                                             variable=self.connectivity_checkbox, command=self.update_scan)
+
+        self.ipsec_checkbox = BooleanVar()
+        self.ipsec_checkbox.set(True)
+        self.categories_menu.add_checkbutton(label="IPSec", onvalue=True, offvalue=False,
+                                             variable=self.ipsec_checkbox)
+
+        self.routing_protocols_checkbox = BooleanVar()
+        self.routing_protocols_checkbox.set(True)
+        self.categories_menu.add_checkbutton(label="Routing Protocols", onvalue=True, offvalue=False,
+                                             variable=self.routing_protocols_checkbox)
+
+        self.ncp_checkbox = BooleanVar()
+        self.ncp_checkbox.set(True)
+        self.categories_menu.add_checkbutton(label="NCP", onvalue=True, offvalue=False,
+                                             variable=self.ncp_checkbox)
+
+        self.ncm_checkbox = BooleanVar()
+        self.ncm_checkbox.set(True)
+        self.categories_menu.add_checkbutton(label="NCM", onvalue=True, offvalue=False,
+                                             variable=self.ncm_checkbox)
+
     def open_command(self):
         """Used to open log files and scan them using scan_log.py. Displays results in scan_scrolledtext"""
-        file = filedialog.askopenfile(parent=self.master, mode='rb', title='Select a file', filetypes=(("Log Files",
+        file = filedialog.askopenfile(parent=self.master, mode='rb', title='Select a log file', filetypes=(("Log Files",
                                                                                                 ("*.txt", "*.log"),),
                                                                                                 ("All Files", "*.*")))
 
@@ -68,8 +103,13 @@ class LogGui:
                 self.log_scrolledtext.delete('1.0', END)
                 self.log_scrolledtext.insert('1.0', contents)
 
+                # Check the categories to search for
+                self.get_categories()
+
                 # insert scanned log into the scan_textpad
-                ScanLog(file.name, 'scan_output.txt').search_log()
+                self.scanner.input_file = file.name
+                self.scanner.output_file = 'scan_output.txt'
+                self.scanner.search_log()
                 with open('scan_output.txt', 'r', encoding='UTF-8') as scan_file:
                     scan_contents = scan_file.read()
                     self.scan_scrolledtext.delete('1.0', END)
@@ -91,6 +131,58 @@ class LogGui:
             data = self.scan_scrolledtext.get('1.0', END+'-1c')
             file.write(data)
             file.close()
+
+    def get_categories(self):
+        """Checks which categories are enabled to be searched for and updates the scanners .search_categories"""
+
+        # Updates Connectivity + Modem category
+        if self.connectivity_checkbox.get():
+            self.scanner.update_categories('Connectivity+Modem')
+        else:
+            self.scanner.remove_category('Connectivity+Modem')
+
+        # Updates IPSec category
+        if self.ipsec_checkbox.get():
+            self.scanner.update_categories('IPSec')
+        else:
+            self.scanner.remove_category('IPSec')
+
+        # Updates Routing Protocols category
+        if self.routing_protocols_checkbox.get():
+            self.scanner.update_categories('Routing Protocols')
+        else:
+            self.scanner.remove_category('Routing Protocols')
+
+        # Updates NCP category
+        if self.ncp_checkbox.get():
+            self.scanner.update_categories('NCP')
+        else:
+            self.scanner.remove_category('NCP')
+
+        # Updates NCM category
+        if self.ncm_checkbox.get():
+            self.scanner.update_categories('NCM')
+        else:
+            self.scanner.remove_category('NCM')
+
+    def update_scan(self):
+        """Updates the scan results when a check box is checked/unchecked"""
+        # checks to make sure a file has been opened, if not, doesn't update the search
+        if self.scanner.input_file is not None:
+            # Check the categories to search for
+            self.get_categories()
+            print(self.connectivity_checkbox.get())
+            print(self.scanner.search_categories)
+
+            # insert scanned log into the scan_textpad
+            print(self.scanner.input_file)
+            self.scanner.output_file = 'scan_output.txt'
+            self.scanner.search_log()
+            with open('scan_output.txt', 'r', encoding='UTF-8') as scan_file:
+                scan_contents = scan_file.read()
+                print(scan_contents)
+                self.scan_scrolledtext.delete('1.0', END)
+                self.scan_scrolledtext.insert('1.0', scan_contents)
 
     def exit_command(self):
         """Quits the program"""
