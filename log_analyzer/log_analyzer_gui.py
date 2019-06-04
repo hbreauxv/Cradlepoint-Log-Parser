@@ -73,22 +73,22 @@ class LogGui:
         self.ipsec_checkbox = BooleanVar()
         self.ipsec_checkbox.set(True)
         self.categories_menu.add_checkbutton(label="IPSec", onvalue=True, offvalue=False,
-                                             variable=self.ipsec_checkbox)
+                                             variable=self.ipsec_checkbox, command=self.update_scan)
 
         self.routing_protocols_checkbox = BooleanVar()
         self.routing_protocols_checkbox.set(True)
         self.categories_menu.add_checkbutton(label="Routing Protocols", onvalue=True, offvalue=False,
-                                             variable=self.routing_protocols_checkbox)
+                                             variable=self.routing_protocols_checkbox, command=self.update_scan)
 
         self.ncp_checkbox = BooleanVar()
         self.ncp_checkbox.set(True)
         self.categories_menu.add_checkbutton(label="NCP", onvalue=True, offvalue=False,
-                                             variable=self.ncp_checkbox)
+                                             variable=self.ncp_checkbox, command=self.update_scan)
 
         self.ncm_checkbox = BooleanVar()
         self.ncm_checkbox.set(True)
         self.categories_menu.add_checkbutton(label="NCM", onvalue=True, offvalue=False,
-                                             variable=self.ncm_checkbox)
+                                             variable=self.ncm_checkbox, command=self.update_scan)
 
     def open_command(self):
         """Used to open log files and scan them using scan_log.py. Displays results in scan_scrolledtext"""
@@ -171,16 +171,11 @@ class LogGui:
         if self.scanner.input_file is not None:
             # Check the categories to search for
             self.get_categories()
-            print(self.connectivity_checkbox.get())
-            print(self.scanner.search_categories)
 
-            # insert scanned log into the scan_textpad
-            print(self.scanner.input_file)
-            self.scanner.output_file = 'scan_output.txt'
+            # Search the log with the updated categories
             self.scanner.search_log()
             with open('scan_output.txt', 'r', encoding='UTF-8') as scan_file:
                 scan_contents = scan_file.read()
-                print(scan_contents)
                 self.scan_scrolledtext.delete('1.0', END)
                 self.scan_scrolledtext.insert('1.0', scan_contents)
 
