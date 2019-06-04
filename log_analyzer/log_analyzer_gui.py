@@ -56,8 +56,10 @@ class LogGui(tk.Frame):
         master.option_add('*tearOff', False)
 
         # configure grid
-        Grid.columnconfigure(master, 0, weight=1)
+        Grid.columnconfigure(master, 0, weight=1, minsize=15)
         Grid.columnconfigure(master, 1, weight=1)
+        Grid.columnconfigure(master, 2, weight=1, minsize=15)
+        Grid.columnconfigure(master, 3, weight=1)
         Grid.rowconfigure(master, 1, weight=1)
 
         # create log scrollboxes & labels
@@ -69,7 +71,7 @@ class LogGui(tk.Frame):
 
         self.log_linenumbers = TextLineNumbers(self.log_scrolledtext, width=30)
         self.log_linenumbers.attach(self.log_scrolledtext)
-        self.log_linenumbers.grid(column=0, row=1, sticky=N + S + E + W)
+        self.log_linenumbers.grid(column=0, row=1, sticky=N + W)
 
         # create scan results scrollboxes & labels
         self.scan_text = Label(master, text="Scan Results")
@@ -80,7 +82,7 @@ class LogGui(tk.Frame):
 
         self.scan_linenumbers = TextLineNumbers(self.scan_scrolledtext, width=10)
         self.scan_linenumbers.attach(self.scan_scrolledtext)
-        self.scan_linenumbers.grid(column=2, row=1, sticky=N + S + W + E)
+        self.scan_linenumbers.grid(column=2, row=1, sticky=N + W)
 
         # create menus for the window
         self.menu = Menu(master)
