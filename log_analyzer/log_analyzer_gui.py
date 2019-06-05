@@ -56,9 +56,9 @@ class LogGui(tk.Frame):
         master.option_add('*tearOff', False)
 
         # configure grid
-        Grid.columnconfigure(master, 0, weight=1, minsize=17)
+        Grid.columnconfigure(master, 0, weight=0, minsize=17)
         Grid.columnconfigure(master, 1, weight=1)
-        Grid.columnconfigure(master, 2, weight=1, minsize=20)
+        Grid.columnconfigure(master, 2, weight=0, minsize=20)
         Grid.columnconfigure(master, 3, weight=1)
         Grid.rowconfigure(master, 1, weight=1)
 
