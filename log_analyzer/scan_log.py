@@ -114,7 +114,7 @@ class ScanLog(object):
         elif self.log_database.endswith('.json'):
             return self.convert_json()
 
-    def update_categories(self, category):
+    def add_category(self, category):
         """Add log categories to be searched for"""
         if category in self.ALLOWED_CATEGORIES:
             if category not in self.search_categories:

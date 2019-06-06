@@ -144,7 +144,7 @@ class LogGui(tk.Frame):
                 self.log_scrolledtext.insert('1.0', contents)
 
                 # Check the categories to search for
-                self.get_categories()
+                self.update_categories()
 
                 # insert scanned log into the scan_textpad
                 self.scanner.input_file = file.name
@@ -172,36 +172,36 @@ class LogGui(tk.Frame):
             file.write(data)
             file.close()
 
-    def get_categories(self):
+    def update_categories(self):
         """Checks which categories are enabled to be searched for and updates the scanners .search_categories"""
 
         # Updates Connectivity + Modem category
         if self.connectivity_checkbox.get():
-            self.scanner.update_categories('Connectivity+Modem')
+            self.scanner.add_category('Connectivity+Modem')
         else:
             self.scanner.remove_category('Connectivity+Modem')
 
         # Updates IPSec category
         if self.ipsec_checkbox.get():
-            self.scanner.update_categories('IPSec')
+            self.scanner.add_category('IPSec')
         else:
             self.scanner.remove_category('IPSec')
 
         # Updates Routing Protocols category
         if self.routing_protocols_checkbox.get():
-            self.scanner.update_categories('Routing Protocols')
+            self.scanner.add_category('Routing Protocols')
         else:
             self.scanner.remove_category('Routing Protocols')
 
         # Updates NCP category
         if self.ncp_checkbox.get():
-            self.scanner.update_categories('NCP')
+            self.scanner.add_category('NCP')
         else:
             self.scanner.remove_category('NCP')
 
         # Updates NCM category
         if self.ncm_checkbox.get():
-            self.scanner.update_categories('NCM')
+            self.scanner.add_category('NCM')
         else:
             self.scanner.remove_category('NCM')
 
@@ -210,7 +210,7 @@ class LogGui(tk.Frame):
         # checks to make sure a file has been opened, if not, doesn't update the search
         if self.scanner.input_file is not None:
             # Check the categories to search for
-            self.get_categories()
+            self.update_categories()
 
             # Search the log with the updated categories
             self.scanner.search_log()
