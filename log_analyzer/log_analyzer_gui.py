@@ -96,11 +96,6 @@ class LogGui(tk.Frame):
         self.filemenu.add_separator()
         self.filemenu.add_command(label="Exit", command=self.exit_command)
 
-        # help menu
-        self.helpmenu = Menu(self.menu)
-        self.menu.add_cascade(label="Help", menu=self.helpmenu)
-        self.helpmenu.add_command(label="About...", command=self.about_command)
-
         # categories menu
         self.categories_menu = Menu(self.menu)
         self.menu.add_cascade(label="Categories", menu=self.categories_menu)
@@ -129,6 +124,11 @@ class LogGui(tk.Frame):
         self.ncm_checkbox.set(True)
         self.categories_menu.add_checkbutton(label="NCM", onvalue=True, offvalue=False,
                                              variable=self.ncm_checkbox, command=self.update_scan)
+
+        # help menu
+        self.helpmenu = Menu(self.menu)
+        self.menu.add_cascade(label="Help", menu=self.helpmenu)
+        self.helpmenu.add_command(label="About...", command=self.about_command)
 
     def open_command(self):
         """Used to open log files and scan them using scan_log.py. Displays results in scan_scrolledtext"""
