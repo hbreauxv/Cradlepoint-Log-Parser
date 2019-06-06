@@ -124,10 +124,11 @@ class ScanLog(object):
 
     def remove_category(self, category):
         """Remove a log category to be searched for"""
-        if category in self.ALLOWED_CATEGORIES:
+        # Data validation, remove category if hasn't been already
+        if category in self.search_categories:
             self.search_categories.remove(category)
-        else:
-            raise Exception('The category %s does not exist. Allowed categories: %s' % (category, self.ALLOWED_CATEGORIES))
+        elif category not in self.search_categories:
+            pass
 
 
 
