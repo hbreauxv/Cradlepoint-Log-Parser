@@ -74,30 +74,25 @@ class ScanLog(object):
         search_log a log file for search terms and then write matches + their meanings to an output file
         dictionary: dictionary from convert_xlsx() or convert_json()
         """
-
+        # create search dictionary from our database
         dictionary = self._convert_db()
 
         # open input and output files
-        input_file = open(self.input_file, "r")
-        output_file = open(self.output_file, "w", encoding='UTF-8')
+        with open(self.input_file, 'r') as input_file:
+            with open(self.output_file, 'w', encoding='UTF-8') as output_file:
 
-        # go through each line in the input file and search it for matches with our regex
-        for i, line in enumerate(input_file, 1):
-            # search line for a match
-            for key in dictionary.keys():
-                # search line for a match
-                match = re.search(key, line)
+                # search every line for a match
+                for i, line in enumerate(input_file, 1):
+                    for key in dictionary.keys():
+                        # search line for a match
+                        match = re.search(key, line)
 
-                # if there's a match, write the line, match, and the meaning to our output file
-                if match:
-                    output_file.write("Match on line %s, Keyword: %s \n" % (i, match.group()))
-                    output_file.write('\n')
-                    output_file.write("Common meaning: %s" % dictionary[key] + '\n')
-                    output_file.write('\n\n\n')
-
-        # close the input and output files
-        input_file.close()
-        output_file.close()
+                        # if there's a match, write the line, match, and the meaning to our output file
+                        if match:
+                            output_file.write("Match on line %s, Keyword: %s \n" % (i, match.group()))
+                            output_file.write('\n')
+                            output_file.write("Common meaning: %s" % dictionary[key] + '\n')
+                            output_file.write('\n\n\n')
 
     def _convert_db(self):
         """Check log db type and return the correctly dictionary"""
