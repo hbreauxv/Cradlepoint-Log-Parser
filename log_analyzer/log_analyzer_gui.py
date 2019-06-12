@@ -91,8 +91,8 @@ class LogGui(tk.Frame):
         # file menu
         self.filemenu = Menu(self.menu)
         self.menu.add_cascade(label="File", menu=self.filemenu)
-        self.filemenu.add_command(label="Open...", command=self.open_command)
-        self.filemenu.add_command(label="Save as...", command=self.save_command)
+        self.filemenu.add_command(label="Open...", command=self.select_file_command)
+        self.filemenu.add_command(label="Save as...", command=self.save_file_command)
         self.filemenu.add_separator()
         self.filemenu.add_command(label="Exit", command=self.exit_command)
 
@@ -130,7 +130,7 @@ class LogGui(tk.Frame):
         self.menu.add_cascade(label="Help", menu=self.helpmenu)
         self.helpmenu.add_command(label="About...", command=self.about_command)
 
-    def open_command(self):
+    def select_file_command(self):
         """Used to open log files and scan them using scan_log.py. Displays results in scan_scrolledtext"""
         file = filedialog.askopenfile(parent=self.master, mode='rb', title='Select a log file', filetypes=(("Log Files",
                                                                                                 ("*.txt", "*.log"),),
@@ -162,7 +162,7 @@ class LogGui(tk.Frame):
                 print('Exception occurred: {}'.format(e))
                 file.close()
 
-    def save_command(self):
+    def save_file_command(self):
         """Saves the contents of scan_scrolledtext to a file"""
         file = filedialog.asksaveasfile(mode='w', defaultextension=".txt", initialdir=os.getcwd())
 
