@@ -82,11 +82,7 @@ class ScanLog(object):
         output_file = open(self.output_file, "w", encoding='UTF-8')
 
         # go through each line in the input file and search it for matches with our regex
-        i = 0
-        for line in input_file:
-            # increment line counter
-            i += 1
-
+        for i, line in enumerate(input_file, 1):
             # search line for a match
             for key in dictionary:
                 # compile regex

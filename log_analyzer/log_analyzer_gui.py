@@ -230,4 +230,5 @@ class LogGui(tk.Frame):
 
 root = Tk()
 gui = LogGui(root)
+
 root.mainloop()
