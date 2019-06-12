@@ -84,12 +84,9 @@ class ScanLog(object):
         # go through each line in the input file and search it for matches with our regex
         for i, line in enumerate(input_file, 1):
             # search line for a match
-            for key in dictionary:
-                # compile regex
-                interesting_text = re.compile(key)
-
+            for key in dictionary.keys():
                 # search line for a match
-                match = re.search(interesting_text, line)
+                match = re.search(key, line)
 
                 # if there's a match, write the line, match, and the meaning to our output file
                 if match:
