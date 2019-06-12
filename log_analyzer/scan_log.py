@@ -17,13 +17,13 @@ class ScanLog(object):
     """
 
     # initialized allowed search categories
-    ALLOWED_CATEGORIES = ['Connectivity+Modem', 'IPSec', 'Routing Protocols', 'NCP', 'NCM']
+    ALLOWED_CATEGORIES = {'Connectivity+Modem', 'IPSec', 'Routing Protocols', 'NCP', 'NCM'}
 
     def __init__(self, input_file, output_file, log_database='log_messages.xlsx'):
         self.input_file = input_file
         self.output_file = output_file
         self.log_database = log_database
-        self.search_categories = ['Connectivity+Modem','IPSec','Routing Protocols','NCP','NCM']
+        self.search_categories = self.ALLOWED_CATEGORIES.copy()
 
     def convert_xlsx(self):
         """
@@ -117,8 +117,7 @@ class ScanLog(object):
     def add_category(self, category):
         """Add log categories to be searched for"""
         if category in self.ALLOWED_CATEGORIES:
-            if category not in self.search_categories:
-                self.search_categories.insert(0, category)
+            self.search_categories.add(category)
         else:
             raise Exception('The category %s does not exist. Allowed categories: %s' % (category, self.ALLOWED_CATEGORIES))
 
