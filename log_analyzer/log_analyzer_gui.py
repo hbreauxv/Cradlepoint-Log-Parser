@@ -155,12 +155,9 @@ class LogGui(tk.Frame):
                     self.scan_scrolledtext.delete('1.0', END)
                     self.scan_scrolledtext.insert('1.0', scan_contents)
 
-                file.close()
-
             except Exception as e:
                 messagebox.showinfo('Error occurred: {}'.format(e))
                 print('Exception occurred: {}'.format(e))
-                file.close()
 
     def save_file_command(self):
         """Saves the contents of scan_scrolledtext to a file"""
