@@ -49,14 +49,8 @@ class ScanLog(object):
 
                 # loop through rows and append them to the search_dictionary
                 for index, row in df.iterrows():
-                    # replace any characters that mess up regex with escaped versions
-                    escaped_row = str(row['Message'])
-                    escaped_row = escaped_row.replace('|', '\|')
-                    escaped_row = escaped_row.replace('(', '\(')
-                    escaped_row = escaped_row.replace(')', '\)')
-
-                    # write rows to our search dictionary and appened a greedy match to end of line
-                    search_dictionary['(' + escaped_row.rstrip() + '.*$)'] = row['Meaning']
+                    # write row to our search dictionary and appened a greedy match to end of line
+                    search_dictionary['(' + str(row['Message']).rstrip() + '.*$)'] = row['Meaning']
 
             except Exception as e:
                 print("Exception occured while loading %s: %s" % (category, e))
