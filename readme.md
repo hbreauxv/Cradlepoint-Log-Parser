@@ -1,6 +1,6 @@
 # Cradlepoint Log Parser
 
-Cradlepoint Log Parser is a Python program that takes a Cradlepoint log and parses it for interesting/problematic lines.  It outputs a file containing the problem lines and their most likely meanings. 
+Cradlepoint Log Parser is a Python3 program that takes a Cradlepoint log and parses it for interesting/problematic lines.  It outputs a file containing the problem lines and their most likely meanings. 
 
 ![Screenshot of Parser](https://github.com/hbreauxv/Cradlepoint-Log-Parser/blob/restructured_analyzer/log_analyzer/resources/analyzer_screenshot.png)
 
