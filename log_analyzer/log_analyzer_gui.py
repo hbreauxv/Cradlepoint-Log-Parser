@@ -80,7 +80,7 @@ class LogGui(tk.Frame):
         self.scan_scrolledtext = ScrolledText.ScrolledText(master, font='Segoe 11', wrap='word')
         self.scan_scrolledtext.grid(column=3, row=1, sticky=N + S + W + E)
 
-        self.scan_linenumbers = TextLineNumbers(self.scan_scrolledtext, width=10)
+        self.scan_linenumbers = TextLineNumbers(self.scan_scrolledtext, width=30)
         self.scan_linenumbers.attach(self.scan_scrolledtext)
         self.scan_linenumbers.grid(column=2, row=1, sticky=N + W + S)
 
