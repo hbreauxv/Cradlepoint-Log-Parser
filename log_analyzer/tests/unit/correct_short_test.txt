@@ -1,0 +1,12 @@
+Match on line 1, Keyword: WAN:ac2e4ac2|Connect Event: no carrier - state: connecting 
+
+Common meaning: No carrier is an error that typically indicates bad provisioning by the carrier.  In some cases it can also appear if the modem is in an area with very poor signal strength.  To resolve this error you usually want to verify provisioning with the carrier and/or move the modem to an area with better signal strength. 
+
+
+
+Match on line 2, Keyword: Mon Jan  8 13:23:47 2018|INFO|WAN:ac2e4ac2| mdm.1: LTE Modem data connection failed - status:9 
+
+Common meaning: The LTE connection to the internet failed.  Status 9 indicates a no carrier error.  No carrier is usually a result of bad provisioning or very poor signal strength.  
+
+
+
