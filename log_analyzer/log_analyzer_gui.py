@@ -25,7 +25,7 @@ class TextLineNumbers(tk.Canvas):
         self.textwidget = text_widget
 
     def redraw(self, *args):
-        '''redraw line numbers'''
+        """redraw line numbers"""
         self.delete("all")
 
         i = self.textwidget.index("@0,0")
@@ -93,6 +93,8 @@ class LogGui(tk.Frame):
         self.menu.add_cascade(label="File", menu=self.filemenu)
         self.filemenu.add_command(label="Open...", command=self.select_file_command)
         self.filemenu.add_command(label="Save as...", command=self.save_file_command)
+        self.filemenu.add_separator()
+        self.filemenu.add_command(label="Scan Log", command=self.scan_textbox_command)
         self.filemenu.add_separator()
         self.filemenu.add_command(label="Exit", command=self.exit_command)
 
@@ -168,6 +170,32 @@ class LogGui(tk.Frame):
             data = self.scan_scrolledtext.get('1.0', END+'-1c')
             file.write(data)
             file.close()
+
+    def scan_textbox_command(self):
+        """Scan the contents of the log_scrolledtext, so that users can have a way to scan pasted text"""
+        with open('logtextbox.txt', 'w') as file:
+            log_text = self.log_scrolledtext.get(1.0, END)
+            file.write(log_text)
+
+            # search the contents if there are any
+            if file is not None:
+                try:
+                    # Check the categories to search for
+                    self.update_categories()
+
+                    # insert scanned log into the scan_textpad
+                    self.scanner.input_file = file.name
+                    self.scanner.output_file = 'scan_output.txt'
+                    self.scanner.search_log()
+                    with open('scan_output.txt', 'r', encoding='UTF-8') as scan_file:
+                        scan_contents = scan_file.read()
+                        self.scan_scrolledtext.delete('1.0', END)
+                        self.scan_scrolledtext.insert('1.0', scan_contents)
+
+                except Exception as e:
+                    messagebox.showinfo('Error occurred: {}'.format(e))
+                    print('Exception occurred: {}'.format(e))
+
 
     def update_categories(self):
         """Checks which categories are enabled to be searched for and updates the scanners .search_categories"""
