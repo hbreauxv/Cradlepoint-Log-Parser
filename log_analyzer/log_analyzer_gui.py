@@ -5,6 +5,7 @@ This is powered by tkinter and uses tkinters grid layout to place elements on th
 """
 
 import os
+import codecs
 import tkinter as tk
 from tkinter import *
 from tkinter import Grid
@@ -132,33 +133,48 @@ class LogGui(tk.Frame):
         self.menu.add_cascade(label="Help", menu=self.helpmenu)
         self.helpmenu.add_command(label="About...", command=self.about_command)
 
+        self.log_scrolledtext.bind('<f>', self.find_text)
+
+
+
     def select_file_command(self):
         """Used to open log files and scan them using scan_log.py. Displays results in scan_scrolledtext"""
-        file = filedialog.askopenfile(parent=self.master, mode='rb', title='Select a log file', filetypes=(("Log Files",
-                                                                                                ("*.txt", "*.log"),),
-                                                                                                ("All Files", "*.*")))
+        with codecs.open(filedialog.askopenfilename(parent=self.master,
+                                    title='Select a log file',
+                                    filetypes=(("Log Files", ("*.txt", "*.log"),),("All Files", "*.*"))
+                                    ), encoding='UTF-8') as file:
 
-        if file is not None:
-            try:
-                contents = file.read()
-                # insert unscanned log into the log_textpad
-                self.log_scrolledtext.delete('1.0', END)
-                self.log_scrolledtext.insert('1.0', contents)
+        # with filedialog.askopenfile(parent=self.master,
+        #                             mode='rb',
+        #                             title='Select a log file',
+        #                             filetypes=(("Log Files", ("*.txt", "*.log"),),("All Files", "*.*"))
+        #                             ) as file:
+            print(file.encoding)
+            if file is not None:
+                try:
+                    contents = file.read()
 
-                # Check the categories to search for
-                self.update_categories()
+                    # insert unscanned log into the log_textpad
+                    self.log_scrolledtext.delete('1.0', END)
+                    self.log_scrolledtext.insert('1.0', contents)
 
-                # insert scanned log into the scan_textpad
-                self.scanner.input_file = file.name
-                self.scanner.output_file = 'scan_output.txt'
-                self.scanner.search_log()
-                with open('scan_output.txt', 'r', encoding='UTF-8') as scan_file:
-                    scan_contents = scan_file.read()
-                    self.scan_scrolledtext.delete('1.0', END)
-                    self.scan_scrolledtext.insert('1.0', scan_contents)
+                    # Check the categories to search for
+                    self.update_categories()
 
-            except Exception as e:
-                messagebox.showinfo('Error', 'Error occurred while opening file: {}'.format(e))
+                    # insert scanned log into the scan_textpad
+                    self.scanner.input_file = file.name
+                    self.scanner.output_file = 'scan_output.txt'
+                    self.scanner.search_log()
+
+                    with open('scan_output.txt', 'r', encoding='UTF-8') as scan_file:
+                        print('here3')
+                        scan_contents = scan_file.read()
+                        self.scan_scrolledtext.delete('1.0', END)
+                        self.scan_scrolledtext.insert('1.0', scan_contents)
+
+                except Exception as e:
+                    print(e)
+                    messagebox.showinfo('Error', 'Error occurred while opening file: {}'.format(e))
 
     def save_file_command(self):
         """Saves the contents of scan_scrolledtext to a file"""
@@ -172,7 +188,7 @@ class LogGui(tk.Frame):
 
     def scan_textbox_command(self):
         """Scan the contents of the log_scrolledtext, so that users can have a way to scan pasted text"""
-        with open('logtextbox.txt', 'w') as file:
+        with open('logtextbox.txt', 'w', encoding="UTF-8") as file:
             log_text = self.log_scrolledtext.get(1.0, END)
             file.write(log_text)
 
@@ -192,8 +208,7 @@ class LogGui(tk.Frame):
                         self.scan_scrolledtext.insert('1.0', scan_contents)
 
                 except Exception as e:
-                    messagebox.showinfo('Error occurred: {}'.format(e))
-                    print('Exception occurred: {}'.format(e))
+                    messagebox.showinfo('Error', 'Error occurred while opening file: {}'.format(e))
 
 
     def update_categories(self):
@@ -253,6 +268,11 @@ class LogGui(tk.Frame):
         messagebox.showinfo("About", "Cradlepoint Log Analyzer\n\nThis program analyzes Cradlepoint logs "
                                              "to look for common messages and display their meanings."
                                              "\n\nMade by Harvey Breaux for Cradlepoint")
+
+    def find_text(self, event):
+        """Searches current textbox for search text"""
+        print("find_text triggered")
+
 
 
 root = Tk()

@@ -72,7 +72,7 @@ class ScanLog(object):
         dictionary = self._convert_db()
 
         # open input and output files
-        with open(self.input_file, 'r') as input_file:
+        with open(self.input_file, 'r', encoding='UTF-8') as input_file:
             with open(self.output_file, 'w', encoding='UTF-8') as output_file:
 
                 # search every line for a match
