@@ -93,7 +93,7 @@ class LogGui(tk.Frame):
         self.filemenu = Menu(self.menu)
         self.menu.add_cascade(label="File", menu=self.filemenu)
         self.filemenu.add_command(label="Open...", command=self.select_file_command)
-        self.filemenu.add_command(label="Save as...", command=self.save_file_command)
+        self.filemenu.add_command(label="Save scan output...", command=self.save_file_command)
         self.filemenu.add_separator()
         self.filemenu.add_command(label="Scan Log", command=self.scan_textbox_command)
         self.filemenu.add_separator()
