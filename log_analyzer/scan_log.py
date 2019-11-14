@@ -7,6 +7,7 @@ import pandas as pd
 import re
 import os
 import sys
+import json
 
 
 class ScanLog(object):
@@ -59,9 +60,24 @@ class ScanLog(object):
         return search_dictionary
 
     def convert_json(self):
-        """converts json log message files into a dictionary"""
 
-        return '{message: "this method hasnt been created yet :)"}'
+        # assemble path to json
+        dirname = os.path.dirname(__file__)
+        json_file = os.path.join(dirname, self.log_database)
+
+        with open(json_file, 'r') as j:
+            json_dictionary = json.load(j)
+
+        # make our search dictionary
+        search_dictionary = {}
+
+        # Loop through our search categories to open the correct sheets and load any messages in them into our search_dictionary
+        for category in self.search_categories:
+            category_messages = json_dictionary[category]
+            for messages in category_messages:
+                search_dictionary[messages.get("Message")] = messages.get("Meaning")
+
+        return search_dictionary
 
     def search_log(self):
         """
@@ -113,7 +129,4 @@ class ScanLog(object):
 
 
 if __name__ == "__main__":
-    try:
-        ScanLog(sys.argv[1], sys.argv[2], 'log_messages.xlsx').search_log()
-    except Exception as e:
-        print("Exception occurred! {}".format(e))
+    ScanLog(sys.argv[1], sys.argv[2], 'log_messages.json').search_log()
