@@ -1,2 +1,2 @@
-pandas
-xlrd
+pandas==0.24.2
+xlrd==1.2.0
