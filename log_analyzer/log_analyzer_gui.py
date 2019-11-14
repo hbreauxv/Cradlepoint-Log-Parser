@@ -12,7 +12,7 @@ from tkinter import Grid
 from tkinter import filedialog
 from tkinter import messagebox
 import tkinter.scrolledtext as ScrolledText
-from .scan_log import ScanLog
+from scan_log import ScanLog
 
 
 class TextLineNumbers(tk.Canvas):
@@ -47,7 +47,7 @@ class LogGui(tk.Frame):
     def __init__(self, master):
         # instantiate scan_log object with no input or output files selected
         tk.Frame.__init__(self)
-        self.scanner = ScanLog(None, None)
+        self.scanner = ScanLog(None, None, log_database='log_messages.json')
 
         self.master = master
         # set window settings
@@ -149,7 +149,7 @@ class LogGui(tk.Frame):
         #                             title='Select a log file',
         #                             filetypes=(("Log Files", ("*.txt", "*.log"),),("All Files", "*.*"))
         #                             ) as file:
-            print(file.encoding)
+
             if file is not None:
                 try:
                     contents = file.read()
@@ -167,7 +167,6 @@ class LogGui(tk.Frame):
                     self.scanner.search_log()
 
                     with open('scan_output.txt', 'r', encoding='UTF-8') as scan_file:
-                        print('here3')
                         scan_contents = scan_file.read()
                         self.scan_scrolledtext.delete('1.0', END)
                         self.scan_scrolledtext.insert('1.0', scan_contents)
