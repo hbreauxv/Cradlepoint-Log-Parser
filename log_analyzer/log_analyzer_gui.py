@@ -12,7 +12,7 @@ from tkinter import Grid
 from tkinter import filedialog
 from tkinter import messagebox
 import tkinter.scrolledtext as ScrolledText
-from scan_log import ScanLog
+from .scan_log import ScanLog
 
 
 class TextLineNumbers(tk.Canvas):
@@ -45,7 +45,7 @@ class LogGui(tk.Frame):
     """Main screen of the GUI"""
 
     def __init__(self, master):
-        # instantiate scanner object with no input or output files selected
+        # instantiate scan_log object with no input or output files selected
         tk.Frame.__init__(self)
         self.scanner = ScanLog(None, None)
 
@@ -271,7 +271,7 @@ class LogGui(tk.Frame):
 
     def find_text(self, event):
         """Searches current textbox for search text"""
-        print("find_text triggered")
+        print("find_text triggered + {}".format(event))
 
 
 
