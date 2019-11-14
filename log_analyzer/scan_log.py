@@ -7,6 +7,7 @@ import pandas as pd
 import re
 import os
 import sys
+import json
 
 
 class ScanLog(object):
@@ -27,7 +28,7 @@ class ScanLog(object):
 
     def convert_xlsx(self):
         """
-        Converts an XLSX file to a python dictionary with keys and values that equate to messages and their meanings.
+        Converts an XLSX file to a python sheet with keys and values that equate to messages and their meanings.
         For each "message" line a regex group trailer and header get applied.  This is considered part of conversion. :)
         This function assumes that any unique identifiers in the log messages have been replaced with ".*"
         """
@@ -36,7 +37,7 @@ class ScanLog(object):
         dirname = os.path.dirname(__file__)
         xlsx = os.path.join(dirname, self.log_database)
 
-        # make our search dictionary
+        # make our search sheet
         search_dictionary = {}
 
         # Loop through our search categories to open the correct sheets and load any messages in them into our df
@@ -49,7 +50,7 @@ class ScanLog(object):
 
                 # loop through rows and append them to the search_dictionary
                 for index, row in df.iterrows():
-                    # write row to our search dictionary and appened a greedy match to end of line
+                    # write row to our search sheet and appened a greedy match to end of line
                     search_dictionary['(' + str(row['Message']).rstrip() + '.*$)'] = row['Meaning']
 
             except Exception as e:
@@ -59,16 +60,31 @@ class ScanLog(object):
         return search_dictionary
 
     def convert_json(self):
-        """converts json log message files into a dictionary"""
 
-        return '{message: "this method hasnt been created yet :)"}'
+        # assemble path to json
+        dirname = os.path.dirname(__file__)
+        json_file = os.path.join(dirname, self.log_database)
+
+        with open(json_file, 'r') as j:
+            json_dictionary = json.load(j)
+
+        # make our search dictionary
+        search_dictionary = {}
+
+        # Loop through our search categories to open the correct sheets and load any messages in them into our search_dictionary
+        for category in self.search_categories:
+            category_messages = json_dictionary[category]
+            for messages in category_messages:
+                search_dictionary[messages.get("Message")] = messages.get("Meaning")
+
+        return search_dictionary
 
     def search_log(self):
         """
         search_log a log file for search terms and then write matches + their meanings to an output file
-        dictionary: dictionary from convert_xlsx() or convert_json()
+        sheet: sheet from convert_xlsx() or convert_json()
         """
-        # create search dictionary from our database
+        # create search sheet from our database
         dictionary = self._convert_db()
 
         # open input and output files
@@ -89,7 +105,7 @@ class ScanLog(object):
                             output_file.write('\n\n\n')
 
     def _convert_db(self):
-        """Check log db type and return the correctly dictionary"""
+        """Check log db type and return the correctly sheet"""
         if self.log_database.endswith('.xlsx'):
             return self.convert_xlsx()
 
@@ -113,7 +129,4 @@ class ScanLog(object):
 
 
 if __name__ == "__main__":
-    try:
-        ScanLog(sys.argv[1], sys.argv[2], 'log_messages.xlsx').search_log()
-    except Exception as e:
-        print("Exception occurred! {}".format(e))
+    ScanLog(sys.argv[1], sys.argv[2], 'log_messages.json').search_log()
