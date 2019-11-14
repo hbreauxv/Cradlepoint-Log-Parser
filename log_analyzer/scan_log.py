@@ -28,7 +28,7 @@ class ScanLog(object):
 
     def convert_xlsx(self):
         """
-        Converts an XLSX file to a python sheet with keys and values that equate to messages and their meanings.
+        Converts an XLSX file to a python dictionary with keys and values that equate to messages and their meanings.
         For each "message" line a regex group trailer and header get applied.  This is considered part of conversion. :)
         This function assumes that any unique identifiers in the log messages have been replaced with ".*"
         """
@@ -37,7 +37,7 @@ class ScanLog(object):
         dirname = os.path.dirname(__file__)
         xlsx = os.path.join(dirname, self.log_database)
 
-        # make our search sheet
+        # make our search dictionary
         search_dictionary = {}
 
         # Loop through our search categories to open the correct sheets and load any messages in them into our df
@@ -50,7 +50,7 @@ class ScanLog(object):
 
                 # loop through rows and append them to the search_dictionary
                 for index, row in df.iterrows():
-                    # write row to our search sheet and appened a greedy match to end of line
+                    # write row to our search dictionary and appened a greedy match to end of line
                     search_dictionary['(' + str(row['Message']).rstrip() + '.*$)'] = row['Meaning']
 
             except Exception as e:
@@ -82,7 +82,7 @@ class ScanLog(object):
     def search_log(self):
         """
         search_log a log file for search terms and then write matches + their meanings to an output file
-        sheet: sheet from convert_xlsx() or convert_json()
+        dictionary: dictionary from convert_xlsx() or convert_json()
         """
         # create search sheet from our database
         dictionary = self._convert_db()
@@ -105,7 +105,7 @@ class ScanLog(object):
                             output_file.write('\n\n\n')
 
     def _convert_db(self):
-        """Check log db type and return the correctly sheet"""
+        """Check log db type and return the correctly dictionary"""
         if self.log_database.endswith('.xlsx'):
             return self.convert_xlsx()
 
