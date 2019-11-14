@@ -84,7 +84,7 @@ class ScanLog(object):
         search_log a log file for search terms and then write matches + their meanings to an output file
         dictionary: dictionary from convert_xlsx() or convert_json()
         """
-        # create search sheet from our database
+        # create search dictionary from our database
         dictionary = self._convert_db()
 
         # open input and output files
