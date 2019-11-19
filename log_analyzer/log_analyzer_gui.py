@@ -53,6 +53,10 @@ class LogGui(tk.Frame):
         # set window settings
         master.title("Cradlepoint Log Analyzer")
         master.geometry('1000x900')
+        # Assemble path to icon
+        dirname = os.path.dirname(__file__)
+        icon = os.path.join(dirname, './resources/cradlepoint_icon.ico')
+        master.iconbitmap(icon)
         master.iconbitmap('./resources/cradlepoint_icon.ico')
         master.option_add('*tearOff', False)
 
