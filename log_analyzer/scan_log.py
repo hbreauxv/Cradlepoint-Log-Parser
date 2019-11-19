@@ -60,7 +60,11 @@ class ScanLog(object):
         return search_dictionary
 
     def convert_json(self):
-
+        """
+        Converts an json file to a python dictionary with keys and values that equate to messages and their meanings.
+        For each "message" line a regex group trailer and header get applied.
+        This function assumes that any unique identifiers in the log messages have been replaced with ".*"
+        """
         # assemble path to json
         dirname = os.path.dirname(__file__)
         json_file = os.path.join(dirname, self.log_database)
@@ -71,7 +75,7 @@ class ScanLog(object):
         # make our search dictionary
         search_dictionary = {}
 
-        # Loop through our search categories to open the correct sheets and load any messages in them into our search_dictionary
+        # Loop through our search categories to load any messages in them into our search_dictionary
         for category in self.search_categories:
             category_messages = json_dictionary[category]
             for messages in category_messages:
