@@ -57,7 +57,7 @@ class LogGui(tk.Frame):
         dirname = os.path.dirname(__file__)
         icon = os.path.join(dirname, './resources/cradlepoint_icon.ico')
         master.iconbitmap(icon)
-        master.iconbitmap('./resources/cradlepoint_icon.ico')
+        master.iconbitmap(icon)
         master.option_add('*tearOff', False)
 
         # configure grid
