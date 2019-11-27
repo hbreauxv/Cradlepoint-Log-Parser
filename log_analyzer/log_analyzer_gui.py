@@ -6,11 +6,7 @@ This is powered by tkinter and uses tkinters grid layout to place elements on th
 
 import os
 import codecs
-import tkinter as tk
-from tkinter import *
-from tkinter import Grid
-from tkinter import filedialog
-from tkinter import messagebox
+from tkinter import Tk, Label, N, E, S, W, Menu, BooleanVar, END, Grid, filedialog, messagebox
 import tkinter.scrolledtext as ScrolledText
 from scan_log import ScanLog
 
